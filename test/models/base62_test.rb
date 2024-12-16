@@ -23,4 +23,27 @@ class Base62Test < ActiveSupport::TestCase
   test "encode 999_999" do
     assert_equal "4c91", Base62.encode(999_999)
   end
+
+    test "decode '0'" do
+    assert_equal 0, Base62.decode("0")
+  end
+
+  test "decode '1'" do
+    assert_equal 1, Base62.decode("1")
+  end
+
+  test "decode 'a'" do
+    assert_equal 10, Base62.decode("a")
+  end
+
+  test "decode '10'" do
+    assert_equal 62, Base62.decode("10")
+  end
+
+  test "decode 'gw'" do
+    assert_equal 1024, Base62.decode("gw")
+  end
+  test "decode '4c91'" do
+    assert_equal 999_999, Base62.decode("4c91")
+  end
 end
