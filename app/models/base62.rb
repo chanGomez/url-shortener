@@ -1,4 +1,4 @@
-class Base62 
+class Base62
   ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".freeze
   BASE = ALPHABET.length
 
@@ -17,6 +17,7 @@ class Base62
   end
 
   def self.decode(string)
+      raise ArgumentError, "Input must be a string" unless string.is_a?(String)
     number = 0
 
     string.reverse.each_char.with_index do |char, index|
@@ -28,6 +29,3 @@ class Base62
     number
   end
 end
-
-#Base62.encode(1024)
-#Base62.decode("fw")
