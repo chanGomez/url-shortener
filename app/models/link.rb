@@ -11,4 +11,8 @@ class Link < ApplicationRecord
   def to_param
     Base62.encode(id)
   end
+
+  def domain
+    URI(url).host rescue StandardError URI::InvalidURIError
+  end
 end
